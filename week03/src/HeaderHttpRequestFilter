@@ -1,0 +1,13 @@
+public class HeaderHttpRequestFilter implements HttpRequestFilter {
+
+    @Override
+    public void filter(FullHttpRequest fullRequest, ChannelHandlerContext ctx) {
+//        fullRequest.headers().set("mao", "soul");
+
+        if(null != fullRequest.headers().get("token") && fullRequest.headers().get("token").equals("soul")){
+            fullRequest.headers().set("flag","true");
+        }else{
+            fullRequest.headers().set("flag","false");
+        }
+    }
+}
