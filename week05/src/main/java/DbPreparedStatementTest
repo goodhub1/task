@@ -1,0 +1,44 @@
+import java.sql.*;
+
+public class DbPreparedStatementTest {
+
+
+
+    public static void main(String[] args) throws ClassNotFoundException, SQLException {
+
+        Class.forName("com.mysql.jdbc.Driver");
+
+        String url = "jdbc:mysql://localhost:3306/test";
+        Connection conn = DriverManager.getConnection(url, "root", "root");
+        System.out.println(conn);
+
+//        Statement stat = conn.createStatement();
+//        System.out.println(stat);//com.mysql.jdbc.StatementImpl@137bc9
+        // 4. 执行sql语句
+        //通过执行者对象调用方法执行SQL语句,获取结果
+        //int executeUpdate(String sql)  执行数据库中的SQL语句,仅限于insert,update,delete
+        //返回值int,操作成功数据库的行数
+//        int row = stat.executeUpdate("INSERT INTO student(id,name) VALUES(1,'jack')");
+//        System.out.println(row);
+
+
+
+        PreparedStatement ps = conn.prepareStatement(
+                "INSERT into student values (?, ?)");
+
+        for (int n = 2; n < 10; n++) {
+
+            ps.setInt(1,n);
+            ps.setString(2,"jack");
+            ps.addBatch();
+        }
+        ps.executeBatch();
+
+        // 5. 释放资源
+
+        conn.close();
+
+
+
+    }
+}
