@@ -11,8 +11,8 @@ public class DbTest {
 
         Class.forName("com.mysql.jdbc.Driver");
 
-        String url = "jdbc:mysql://10.200.44.29:3306/test";
-        Connection conn = DriverManager.getConnection(url, "cms_admin", "1qaz!QAZ");
+        String url = "jdbc:mysql://localhost:3306/test";
+        Connection conn = DriverManager.getConnection(url, "root", "root");
         System.out.println(conn);
 
         Statement stat = conn.createStatement();
