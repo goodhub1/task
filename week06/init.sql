@@ -21,3 +21,10 @@ user_id bigint ,
 product_id bigint,
 PRIMARY KEY ( `id` )
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE order(
+   `id` int(11) NOT NULL AUTO_INCREMENT,  
+   `user_id` int(11) ,
+   `product_id` int(11) ,
+   PRIMARY KEY (`id`)  
+)ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8; 
